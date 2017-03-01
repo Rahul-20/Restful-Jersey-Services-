@@ -1,0 +1,40 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<!-- <init-param> will be used if you want to initialize some parameter for 
+	a particular servlet. When request come to servlet first its init method 
+	will be called then doGet/doPost whereas if you want to initialize some variable 
+	for whole application you will need to use <context-param> . Every servlet 
+	will have access to the context variable. Links:-http://stackoverflow.com/questions/9361538/spring-jdbc-template-for-calling-stored-procedures -->
+
+<web-app>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+		<!-- <param-value>classpath:applicationContext.xml</param-value> -->
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.jerseyapplication.restful.resources</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<url-pattern>/jerseyapp/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

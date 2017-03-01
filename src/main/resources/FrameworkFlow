@@ -1,0 +1,47 @@
+==========
+Versions:-
+==========
+Java-1.7
+Jersey-1.8
+Spring-4.2.2
+Hibernate-4.3.11 
+
+==============
+File:- Pom.xml
+==============
+1.Include Jersey Related Jars
+jersey-server for hosting Api's
+jersey-client for client Api's
+jersey-json is needed in classpath for forming the JSON.It is responsible for marshall and unmarshall of Json.
+jersey-spring is need when you want to integrate your application with spring. Make sure to exclude the spring related jars as those may come with diff versions(Faced issue).
+
+
+2.Include Spring Related Jars
+spring-context
+spring-core
+spring-tx
+spring-orm
+spring-web
+spring-aop
+
+3.Include DB Driver Jar
+mysql-connector-java
+
+4.Include Hibernate Related Jars
+
+hibernate-core
+
+5.Include Database connection pool jar
+commons-dbcp
+
+
+=========================================================================================================
+
+Important Points:-
+
+1.Request object and request bean setter method parameter name both must and should match.
+ie.:- {"userName":"Rahul","password":"Rahul"} userName in req object and request bean setter method parameter.
+
+
+
+
